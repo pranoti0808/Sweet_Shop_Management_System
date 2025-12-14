@@ -1,31 +1,36 @@
-const apiUrl = "http://127.0.0.1:8000/api/auth/register";
+const registerApi = "http://127.0.0.1:8000/api/auth/register";
 
-// Register function
 async function registerUser() {
-    const username = document.getElementById("username").value.trim();
-    const password = document.getElementById("password").value.trim();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
 
     if (!username || !password) {
-        alert("Please enter both username and password.");
+        alert("Username and password required");
         return;
     }
 
     try {
-        const response = await fetch(apiUrl, {
+        const response = await fetch(registerApi, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ username, password })
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                username: username,
+                password: password
+            })
         });
 
+        const data = await response.json();
+
         if (response.ok) {
-            const data = await response.json();
             alert(data.message);
-            // Redirect to login page after successful registration
-            window.location.href = "login.html";
         } else {
-            const errorData = await response.json();
-            alert(errorData.detail);
+            alert(data.detail);
         }
-    } catch (error) {
-        console.error("Error registering user:", error);
-        alert("An error occurred. Please try again.");
+
+    } catch (err) {
+        console.error(err);
+        alert("Server error");
+    }
+}

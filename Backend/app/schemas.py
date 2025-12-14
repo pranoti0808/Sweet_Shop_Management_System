@@ -19,3 +19,9 @@ class SweetUpdate(BaseModel):
     name: str
     price: float
     quantity: int
+
+class SweetResponse(BaseModel):
+    id: int
+    name: str
+    price: float
+    quantity: int
