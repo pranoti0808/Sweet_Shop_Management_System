@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sweet Shop Dashboard</title>
+    <style>
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #333;
+            padding: 8px;
+            text-align: center;
+        }
+        button {
+            margin: 2px;
+            padding: 5px 10px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align:center;">Sweet Shop Dashboard</h1>
+
+    <div style="text-align:center;">
+        <button onclick="showAddForm()">Add New Sweet</button>
+    </div>
+
+    <div id="addForm" style="display:none; text-align:center; margin:20px;">
+        <input type="text" id="sweetName" placeholder="Sweet Name">
+        <input type="number" id="sweetPrice" placeholder="Price">
+        <input type="number" id="sweetQuantity" placeholder="Quantity">
+        <button onclick="addSweet()">Add Sweet</button>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody id="sweetTableBody">
+            <!-- Sweets will be loaded here dynamically -->
+        </tbody>
+    </table>
+
+    <script src="js/sweet.js"></script>
+</body>
+</html>
